@@ -5,7 +5,7 @@ app = Flask(__name__)
 def receive_data():
     data = request.json
     print("Données reçues :", data)
-    return "OK", 200
+    return "OK reçu chef", 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
