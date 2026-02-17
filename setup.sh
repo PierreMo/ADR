@@ -1,6 +1,12 @@
 cd ~
 cd Documents/
 
+# sudo apt install nmcli
+# nmcli dev wifi
+sudo apt install wpasupplicant
+wpa_passphrase LAPTOP-PM moijepeux > /etc/wpa_supplicant.conf
+wpa_supplicant
+
 sudo apt install git
 sudo apt install python3
 
