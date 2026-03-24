@@ -1,10 +1,11 @@
-import requests
-import time
-import random
+# client.py (à exécuter sur les raspberry)
+import socket
 
-url = "http://192.168.1.18:5000/receive"
+HOST = '192.168.x.x'  # Adresse IP du PC
+PORT = 65432
 
-while True:
-    data = {"capteur": random.randint(0, 100)}
-    requests.post(url, json=data)
-    time.sleep(100)  # Envoie toutes les secondes
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.connect((HOST, PORT))
+    s.sendall(b"ENVOIE DATA DEPUIS RASPBERRY")
+    data = s.recv(1024)
+    print(f"Reçu : {data.decode()}")

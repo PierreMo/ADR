@@ -18,6 +18,6 @@ python3 pip install python3-venv
 python3 -m venv env
 source ./env/bin/activate
 
-python3 -m pip install requests
+python3 -m pip install socket
 
 python3 ./ADR/client.py
