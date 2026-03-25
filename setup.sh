@@ -18,7 +18,12 @@ source ./env/bin/activate
 
 echo "----- INSTALLING COMMUNICATIONS LIBs -----"
 python3 -m pip install socket
+# to be able to set the time
 python3 -m pip install datetime
+# to deactivate the ntp that synchronise time
+sudo timedatectl set-ntp false
+
+
 
 echo "----- RUNNING THE CLIENT PROGRAM -----"
 python3 ./ADR/client.py
