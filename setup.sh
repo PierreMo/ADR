@@ -22,6 +22,7 @@ sudo timedatectl set-ntp false
 
 echo "----- INSTALLING HARDWARE LIBs -----"
 python3 -m pip install mpu6050-raspberrypi
+python3 -m pip install smbus
 
 
 echo "----- RUNNING THE CLIENT PROGRAM -----"
