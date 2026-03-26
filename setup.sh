@@ -9,20 +9,19 @@ echo "----- CLONING THE REPOSITORY -----"
 git clone https://github.com/PierreMo/ADR
 
 echo "----- INSTALLING PIP -----"
-python3 -m pip install --upgrade pip
+sudo apt install python3-pip -y
 
 echo "----- INSTALLING VENV AND SETTING IT UP -----"
-python3 pip install python3-venv
+sudo apt install python3-venv
 python3 -m venv env
 source ./env/bin/activate
 
-echo "----- INSTALLING COMMUNICATIONS LIBs -----"
-python3 -m pip install socket
-# to be able to set the time
-python3 -m pip install datetime
+echo "----- CUTTING NTP -----"
 # to deactivate the ntp that synchronise time
 sudo timedatectl set-ntp false
 
+echo "----- INSTALLING HARDWARE LIBs -----"
+python3 -m pip install mpu6050-raspberrypi
 
 
 echo "----- RUNNING THE CLIENT PROGRAM -----"
