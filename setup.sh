@@ -21,8 +21,9 @@ echo "----- CUTTING NTP -----"
 sudo timedatectl set-ntp false
 
 echo "----- INSTALLING HARDWARE LIBs -----"
+sudo apt install python3-smbus
 python3 -m pip install mpu6050-raspberrypi
-python3 -m pip install smbus
+
 
 
 echo "----- RUNNING THE CLIENT PROGRAM -----"
