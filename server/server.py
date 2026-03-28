@@ -8,7 +8,7 @@ import server_fct_run as run
 HOST = '0.0.0.0'  # Listen on all interfaces
 PORT = 65432
 
-NB_MODULES = 3
+NB_MODULES = 1
 connections = []  # List to store connections
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -21,9 +21,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     time.sleep(2)  # Delay of 2 seconds
 
-    # --- Calibration ---
+    # ------------ Calibration --------------
     calib.calibrate_modules(connections, s)
 
 
-    # --- Radar Running ---
+    # ----------- Radar Running -------------
     run.radar_run(connections, s)
