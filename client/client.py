@@ -29,6 +29,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     gyro, img, compass, gps = calib.calib(s, sensor_gyro)
 
+    data_packet = f"{gyro},{img},{compass},{gps}"
+    s.sendall(data_packet.encode())
+
     #sending the calibration data to the server
 
     # ----------- Radar Running -------------
