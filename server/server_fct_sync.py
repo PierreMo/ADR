@@ -2,6 +2,7 @@ from datetime import datetime
 import socket
 import time
 
+
 def connect_synchronize(nb_modules, connections, s):
     # Accept connections from modules
     while nb_modules > len(connections):

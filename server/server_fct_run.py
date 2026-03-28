@@ -1,6 +1,6 @@
 
 
-def radar_run(connections, s):
+def radar_run(connections):
     # Infinite loop to listen to messages from modules
     while True:
         for conn in connections:

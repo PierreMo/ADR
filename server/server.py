@@ -22,8 +22,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     time.sleep(2)  # Delay of 2 seconds
 
     # ------------ Calibration --------------
-    calib.calibrate_modules(connections, s)
+    calib.calibrate_modules(connections)
 
 
     # ----------- Radar Running -------------
-    run.radar_run(connections, s)
+    run.radar_run(connections)

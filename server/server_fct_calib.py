@@ -1,7 +1,7 @@
 from datetime import datetime as datetime, timedelta as timedelta
 
 
-def calibrate_modules(connections, s):
+def calibrate_modules(connections):
     print("Sending green light to all modules...")
     # calibration in 20 sec
     calibration_time = (datetime.now() + timedelta(0, 20)).strftime("%Y-%m-%d %H:%M:%S")
@@ -10,8 +10,8 @@ def calibrate_modules(connections, s):
 
     # receiving image and data from modules
     calibration_data = []
-    while len(calibration_data) < len(connections):
-        calibration_data.append(s.recv(1024).decode())
+    for conn in connections:
+        calibration_data.append(conn.recv(1024).decode())
 
     # treating received data
     for data in calibration_data:
