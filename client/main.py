@@ -8,8 +8,6 @@ import client_fct_sync as sync
 import client_fct_calib as calib
 import client_fct_run as run
 
-from wait import wait_until_time
-
 from __init__ import HOST, PORT, CLIENT_DEBUG
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -19,25 +17,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     # --- Connection and synchronization ---
     sync.sync_connect(s, HOST, PORT)
 
-
     # ------------ Calibration --------------
-    # wait for the start time
-    data = s.recv(1024).decode()
-    if CLIENT_DEBUG:print("Received calibration time: ", data)
-    wait_until_time(data)
-
-    gyro, img, compass, gps = calib.calib(sensor_gyro)
-
-    # sending the calibration data to the server
-    data_packet = f"{gyro},{img},{compass},{gps}"
-    s.sendall(data_packet.encode())
-
+    calib.calib(s, sensor_gyro)
 
     # ----------- Radar Running -------------
-    # wait for the start time
-    data = s.recv(1024).decode()
-    while not data:
-        data = s.recv(1024).decode()
-    wait_until_time(data)
-
     run.run(s)

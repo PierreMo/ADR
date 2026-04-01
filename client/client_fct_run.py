@@ -3,9 +3,16 @@ import time
 import select
 import sys
 
+from wait import wait_until_time
 from __init__ import CLIENT_DEBUG, PACKET_PER_SECOND
 
 def run(s):
+    # wait for the start time
+    data = s.recv(1024).decode()
+    while not data:
+        data = s.recv(1024).decode()
+    wait_until_time(data)
+
     print("Starting radar...")
     microsec_btwn_packets = 1000000 / PACKET_PER_SECOND
     nb_packets_delaying = 0
@@ -16,6 +23,7 @@ def run(s):
         begin_time = datetime.now()
 
         # creating data packet
+        # HERE YOU SHOULD INSERT THE RUNNING PROCESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
         vector = (datetime.now().strftime("%M:%S"), datetime.now().strftime("%M:%S"))
         score = 99
         data_packet = f"{"vecteur_heure "},{vector[0]},{vector[1]},{score}"
@@ -38,4 +46,4 @@ def run(s):
                 print("Loop stopped by user.")
                 break
 
-    print(f"Packets late: {nb_packets_delaying}")
+    print(f"Number of packets delaying: {nb_packets_delaying}")

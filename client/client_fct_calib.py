@@ -1,5 +1,14 @@
-def calib(sensor_gyro):
+from wait import wait_until_time
+from __init__ import CLIENT_DEBUG
 
+
+def calib(s, sensor_gyro):
+    # wait for the start time
+    data = s.recv(1024).decode()
+    if CLIENT_DEBUG:print("Received calibration time: ", data)
+    wait_until_time(data)
+
+    # HERREEEEE YOU SHOULD INSERT THE CALIBRATION PROCESS FOR ALL SENSORS
     # treating image
     img = 0
 
@@ -13,4 +22,7 @@ def calib(sensor_gyro):
     # treating gps
     gps = 0
 
-    return gyro, img, compass, gps
+
+    # sending the calibration data to the server
+    data_packet = f"{gyro},{img},{compass},{gps}"
+    s.sendall(data_packet.encode())
