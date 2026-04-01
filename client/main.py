@@ -10,7 +10,7 @@ import client_fct_run as run
 
 from wait import wait_until_time
 
-from __init__ import HOST, PORT
+from __init__ import HOST, PORT, CLIENT_DEBUG
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     print("Press enter to synchronize")
@@ -23,8 +23,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     # ------------ Calibration --------------
     # wait for the start time
     data = s.recv(1024).decode()
-    while not data:
-        data = s.recv(1024).decode()
+    if CLIENT_DEBUG:print("Received calibration time: ", data)
     wait_until_time(data)
 
     gyro, img, compass, gps = calib.calib(sensor_gyro)

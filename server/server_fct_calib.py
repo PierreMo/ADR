@@ -4,9 +4,9 @@ from __init__ import DEBUG_SERVER, connections
 
 
 def calibrate_modules():
-    if DEBUG_SERVER:print("Sending green light to all modules...")
-    # calibration in 20 sec
-    calibration_time = (datetime.now() + timedelta(0, 20)).strftime("%Y-%m-%d %H:%M:%S")
+    if DEBUG_SERVER:print("Sending calibration time to all modules...")
+    # calibration in 10 sec
+    calibration_time = (datetime.now() + timedelta(0, 10)).strftime("%Y-%m-%d %H:%M:%S")
     for conn in connections:
         conn.sendall(calibration_time.encode())
 
