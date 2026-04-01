@@ -2,6 +2,8 @@ from __init__ import DEBUG_SERVER, connections
 
 
 def radar_run():
+    print("Listening radars...")
+    if DEBUG_SERVER:print("connections: ", connections)
     # Infinite loop to listen to messages from modules
     while True:
         for conn in connections:
