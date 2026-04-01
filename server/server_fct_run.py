@@ -1,4 +1,4 @@
-
+from server import DEBUG_SERVER
 
 def radar_run(connections):
     # Infinite loop to listen to messages from modules
@@ -7,4 +7,4 @@ def radar_run(connections):
             data = conn.recv(1024)
             if not data:
                 break
-            print(f"Received: {data.decode()}")
+            if DEBUG_SERVER:print(f"Received: {data.decode()}")
