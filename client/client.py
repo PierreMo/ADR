@@ -10,6 +10,8 @@ import client_fct_run as run
 
 from wait import wait_until_time
 
+CLIENT_DEBUG = True
+
 HOST = '192.168.137.1'  # IP of the PC in the local network (hotspot for now)
 PORT = 65432
 
@@ -20,6 +22,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     # --- Connection and synchronization ---
     sync.sync_connect(s, HOST, PORT)
 
+
     # ------------ Calibration --------------
     # wait for the start time
     data = s.recv(1024).decode()
@@ -29,10 +32,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     gyro, img, compass, gps = calib.calib(s, sensor_gyro)
 
+    # sending the calibration data to the server
     data_packet = f"{gyro},{img},{compass},{gps}"
     s.sendall(data_packet.encode())
 
-    #sending the calibration data to the server
 
     # ----------- Radar Running -------------
     # wait for the start time
