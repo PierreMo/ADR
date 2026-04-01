@@ -4,6 +4,7 @@ import time
 
 from server import DEBUG_SERVER, NB_MODULES, connections
 
+
 def connect_synchronize(s):
     # Accept connections from modules
     while NB_MODULES > len(connections):

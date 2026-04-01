@@ -27,4 +27,4 @@ python3 -m pip install mpu6050-raspberrypi
 
 
 echo "----- RUNNING THE CLIENT PROGRAM -----"
-python3 ./ADR/client/client.py
+python3 ./ADR/client/main.py
