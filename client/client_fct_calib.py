@@ -1,4 +1,4 @@
-def calib(s, sensor_gyro):
+def calib(sensor_gyro):
 
     # treating image
     img = 0

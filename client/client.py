@@ -10,10 +10,7 @@ import client_fct_run as run
 
 from wait import wait_until_time
 
-CLIENT_DEBUG = True
-
-HOST = '192.168.137.1'  # IP of the PC in the local network (hotspot for now)
-PORT = 65432
+from client import HOST, PORT
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     print("Press enter to synchronize")
@@ -30,7 +27,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         data = s.recv(1024).decode()
     wait_until_time(data)
 
-    gyro, img, compass, gps = calib.calib(s, sensor_gyro)
+    gyro, img, compass, gps = calib.calib(sensor_gyro)
 
     # sending the calibration data to the server
     data_packet = f"{gyro},{img},{compass},{gps}"

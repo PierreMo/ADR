@@ -2,11 +2,11 @@ from datetime import datetime
 import socket
 import time
 
-from server import DEBUG_SERVER
+from server import DEBUG_SERVER, NB_MODULES, connections
 
-def connect_synchronize(nb_modules, connections, s):
+def connect_synchronize(s):
     # Accept connections from modules
-    while nb_modules > len(connections):
+    while NB_MODULES > len(connections):
         conn, addr = s.accept()
         if DEBUG_SERVER:print(f"Connected by {addr},", end="")
         # Send the current time to the client

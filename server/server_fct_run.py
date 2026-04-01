@@ -1,6 +1,7 @@
-from server import DEBUG_SERVER
+from server import DEBUG_SERVER, connections
 
-def radar_run(connections):
+
+def radar_run():
     # Infinite loop to listen to messages from modules
     while True:
         for conn in connections:
