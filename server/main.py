@@ -5,7 +5,7 @@ import server_fct_sync as sync
 import server_fct_calib as calib
 import server_fct_run as run
 
-from server import DEBUG_SERVER, HOST, PORT
+from __init__ import DEBUG_SERVER, HOST, PORT
 
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:

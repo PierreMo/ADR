@@ -10,7 +10,7 @@ import client_fct_run as run
 
 from wait import wait_until_time
 
-from client import HOST, PORT
+from __init__ import HOST, PORT
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     print("Press enter to synchronize")

@@ -1,6 +1,6 @@
 from datetime import datetime as datetime, timedelta as timedelta
 
-from server import DEBUG_SERVER, connections
+from __init__ import DEBUG_SERVER, connections
 
 
 def calibrate_modules():

@@ -1,4 +1,4 @@
-from server import DEBUG_SERVER, connections
+from __init__ import DEBUG_SERVER, connections
 
 
 def radar_run():

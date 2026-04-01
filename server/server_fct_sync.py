@@ -2,7 +2,7 @@ from datetime import datetime
 import socket
 import time
 
-from server import DEBUG_SERVER, NB_MODULES, connections
+from __init__ import DEBUG_SERVER, NB_MODULES, connections
 
 
 def connect_synchronize(s):
